@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}">
+
+    <main layout:fragment="content">
+		<div class="page_container">
+			<div class="row text-center mb-4">
+				<div class="col">
+	            	<h2 class="mt-3" style="font-weight:bold">회원가입</h2>
+				</div>
+	        </div>
+			<div class="row text-center mt-5">
+				<div class="col-md-5 align-items-center" style="float:none; margin:0 auto;">
+			        <form action="" method="post" id="join_form">
+						<div class="mb-4">
+			                <input type="email" class="form-control" id="email" name="email" placeholder="이메일 (example@example.com)">
+			            </div>
+			            <div class="mb-4">
+			                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 (8~16자의 영어와 숫자를 사용해주세요)">
+			            </div>
+						<div class="mb-4">
+			                <input type="password" class="form-control" id="password_chk" name="password_chk" placeholder="위의 비밀번호와 동일하게 입력해주세요">
+			            </div>
+						<div class="mb-4">
+			                <input type="text" class="form-control" id="name" name="name" placeholder="닉네임 8자 이하의 문자 입력해주세요">
+			            </div>
+			            <div class="mb-4">
+			                <select id="category" name="category" class="form-default w-100">
+								<option value="0">영상 카테고리</option>
+								<option value="1">먹방</option>
+								<option value="2">게임</option>
+								<option value="3">여행</option>
+								<option value="4">음악</option>
+								<option value="5">여행</option>
+							</select>
+			            </div>
+						<div class="mb-4">
+			                <input type="text" class="form-control" id="age" name="age" placeholder="나이">
+			            </div>
+			            <div class="mb-4">
+							<label for="gender_m" class="radio-lb form-checked w-49">남자</label>
+			                <input type="radio" id="gender_m" name="gender" class="d-none" selected>
+							<label for="gender_f" class="radio-lb form-default w-49">여자</label>
+							<input type="radio" id="gender_f" name="gender" class="d-none">
+			            </div>
+						<div class="mb-4">
+			                <input type="text" class="form-control bfh-phone" data-format="ddd-dddd-dddd" id="phone" name="phone" placeholder="휴대폰 번호 입력해주세요">
+			            </div>
+			            <div class="mt-5">
+							<button type="submit" class="btn btn-foreign">회원가입</button>
+			            </div>
+			        </form>
+				</div>
+			</div>
+		</div>
+    </main>
+</html>
