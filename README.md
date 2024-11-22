@@ -1,6 +1,6 @@
 # BlurDot
 
-K-Digital 과정 기업프로젝트 4조\n
+K-Digital 과정 기업프로젝트 4조   
 영상 비식별화 AI 서비스 BlurDot의 서비스를 지원하는 웹 사이트 개발
 
 ## 시작하기에 앞서
