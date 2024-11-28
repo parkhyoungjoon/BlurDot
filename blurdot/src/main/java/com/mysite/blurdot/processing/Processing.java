@@ -1,5 +1,8 @@
-package com.mysite.blurdot.file;
+package com.mysite.blurdot.processing;
+
 import java.time.LocalDateTime;
+
+import com.mysite.blurdot.file.StorageFile;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +41,7 @@ public class Processing {
     
     @ManyToOne
 	@JoinColumn(name="fileId") 
-	private File file; 
+	private StorageFile file; 
     
     @Builder
     public Processing(Long processingId,Short proStopwatch,Short proFileTxtCnt,LocalDateTime proFileDate){

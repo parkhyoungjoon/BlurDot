@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}">
+
+    <main layout:fragment="content">
+		<div class="page_container">
+			<div class="row text-center mb-4">
+				<div class="col">
+	            	<h2 class="mt-3" style="font-weight:bold">메일 인증</h2>
+				</div>
+	        </div>
+			<div class="row text-center mt-5">
+				<div class="col-md-5 align-items-center" style="float:none; margin:0 auto;">
+					<form th:action="@{/user/verify}" method="post">
+						<div th:text="${message}" class="alert alert-danger"></div>
+						<div class="mb-3">
+			               <input type="text" class="form-control" id="email" name="email"  th:value="${email}" readonly>
+			            </div>
+			            <div class="mb-3">
+			                <input type="text" class="form-control" name="code" id="code" placeholder="코드를 입력해주세요" required>
+			            </div>
+			            <div class="mt-5">
+							<button type="submit" class="btn btn-primary">이메일 인증</button>
+			            </div>
+			        </form>
+				</div>
+			</div>
+		</div>
+    </main>
+</html>
