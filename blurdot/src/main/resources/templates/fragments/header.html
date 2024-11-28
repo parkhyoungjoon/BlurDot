@@ -7,9 +7,14 @@
 				</a>
             </div>
             <nav>
-                <a href="/user/membership_form" class="mx-3 text-dark">요금제</a>
-                <a href="#" class="mx-3 text-dark">스토리지</a>
-                <a href="/user/login_form" class="btn btn-primary top-btn">로그인</a>
+                <!--<a href="/user/membership_form" class="mx-3 text-dark">요금제</a> -->
+                <a th:href="@{/storage/list}" class="mx-3 text-dark">스토리지</a>
+				<a th:href="@{/user/login_form}" class="btn btn-primary top-btn" 
+				   sec:authorize="!isAuthenticated()">로그인</a>
+
+				<!-- 로그인 상태에서만 보임 -->
+				<a th:href="@{/user/logout}" class="btn btn-foreign top-btn" 
+				   sec:authorize="isAuthenticated()">로그아웃</a>
             </nav>
         </div>
     </header>

@@ -1,58 +1,69 @@
 <!DOCTYPE html>
-<html xmlns:th="http//www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{fragments/base}">
 
     <main layout:fragment="content">
-		<div class="page_container">
-			<div class="row text-center mb-4">
-				<div class="col">
-	            	<h2 class="mt-3" style="font-weight:bold">회원가입</h2>
-				</div>
-	        </div>
-			<div class="row text-center mt-5">
-				<div class="col-md-5 align-items-center" style="float:none; margin:0 auto;">
-			        <form action="" method="post" id="join_form">
-						<div class="mb-4">
-			                <input type="email" class="form-control" id="email" name="email" placeholder="이메일 (example@example.com)">
-			            </div>
-			            <div class="mb-4">
-			                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 (8~16자의 영어와 숫자를 사용해주세요)">
-			            </div>
-						<div class="mb-4">
-			                <input type="password" class="form-control" id="password_chk" name="password_chk" placeholder="위의 비밀번호와 동일하게 입력해주세요">
-			            </div>
-						<div class="mb-4">
-			                <input type="text" class="form-control" id="name" name="name" placeholder="닉네임 8자 이하의 문자 입력해주세요">
-			            </div>
-			            <div class="mb-4">
-			                <select id="category" name="category" class="form-default w-100">
-								<option value="0">영상 카테고리</option>
-								<option value="1">먹방</option>
-								<option value="2">게임</option>
-								<option value="3">여행</option>
-								<option value="4">음악</option>
-								<option value="5">여행</option>
-							</select>
-			            </div>
-						<div class="mb-4">
-			                <input type="text" class="form-control" id="age" name="age" placeholder="나이">
-			            </div>
-			            <div class="mb-4">
-							<label for="gender_m" class="radio-lb form-checked w-49">남자</label>
-			                <input type="radio" id="gender_m" name="gender" class="d-none" selected>
-							<label for="gender_f" class="radio-lb form-default w-49">여자</label>
-							<input type="radio" id="gender_f" name="gender" class="d-none">
-			            </div>
-						<div class="mb-4">
-			                <input type="text" class="form-control bfh-phone" data-format="ddd-dddd-dddd" id="phone" name="phone" placeholder="휴대폰 번호 입력해주세요">
-			            </div>
-			            <div class="mt-5">
-							<button type="submit" class="btn btn-foreign">회원가입</button>
-			            </div>
-			        </form>
-				</div>
-			</div>
-		</div>
+        <div class="page_container">
+            <div class="row text-center mb-4">
+                <div class="col">
+                    <h2 class="mt-3" style="font-weight:bold">회원가입</h2>
+                </div>
+            </div>
+            <div class="row text-center mt-5">
+                <div class="col-md-5 align-items-center" style="float:none; margin:0 auto;">
+                    <form th:action="@{/user/join_form}" method="post" id="join_form" th:object="${userDTO}">
+                        <div th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}" class="inputEr"></div>
+                        <div class="mb-4">
+                            <input type="email" class="form-control" th:field="*{userEmail}" placeholder="이메일 (example@example.com)" th:value="${userDTO.userEmail}">
+                        </div>
+
+                        <div th:if="${#fields.hasErrors('userPassword1')}" th:errors="*{userPassword1}" class="inputEr"></div>
+                        <div class="mb-4">
+                            <input type="password" class="form-control" th:field="*{userPassword1}" placeholder="비밀번호 (8~16자의 영어와 숫자를 사용해주세요)" th:value="${userDTO.userPassword1}">
+                        </div>
+
+                        <div th:if="${#fields.hasErrors('userPassword2')}" th:errors="*{userPassword2}" class="inputEr"></div>
+                        <div class="mb-4">
+                            <input type="password" class="form-control" th:field="*{userPassword2}" placeholder="위의 비밀번호와 동일하게 입력해주세요" th:value="${userDTO.userPassword2}">
+                        </div>
+
+                        <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="inputEr"></div>
+                        <div class="mb-4">
+                            <input type="text" class="form-control" th:field="*{userName}" placeholder="닉네임 8자 이하의 문자 입력해주세요" th:value="${userDTO.userName}">
+                        </div>
+
+                        <div th:if="${#fields.hasErrors('categoryId')}" th:errors="*{categoryId}" class="inputEr"></div>
+                        <div class="mb-4">
+                            <select  th:field="*{categoryId}" class="form-default w-100" required>
+                                <option value="0">카테고리를 선택하세요</option>
+                                <option th:each="category : ${categories}" th:value="${category.category_id}" th:text="${category.category_name}"></option>
+                            </select>
+                        </div>
+
+                        <div th:if="${#fields.hasErrors('userAge')}" th:errors="*{userAge}" class="inputEr"></div>
+                        <div class="mb-4">
+                            <input type="text" class="form-control"  th:field="*{userAge}" placeholder="생년월일 8자리 (20241125)" th:value="${userDTO.userAge}">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="userGender1" class="radio-lb form-checked w-49">남자</label>
+                            <input type="radio" th:field="*{userGender}" th:checked="${userDTO.userGender == 0 or userDTO.userGender == null}" th:value="0" class="d-none" checked>
+                            <label for="userGender2" class="radio-lb form-default w-49">여자</label>
+                            <input type="radio" th:field="*{userGender}" th:checked="${userDTO.userGender == 1}" th:value="1" class="d-none">
+                        </div>
+
+                        <div th:if="${#fields.hasErrors('userPhonenumber')}" th:errors="*{userPhonenumber}" class="inputEr"></div>
+                        <div class="mb-4">
+                            <input type="tel" class="form-control bfh-phone" data-format="ddd-dddd-dddd" th:field="*{userPhonenumber}" placeholder="휴대폰 번호 입력해주세요" th:value="${userDTO.userPhonenumber}">
+                        </div>				
+					    <input type="text" id="Confirm" name="Confirm" style="display: none" value="">
+                        <div class="mt-5">
+                            <button type="submit" class="btn btn-foreign">회원가입</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
 </html>

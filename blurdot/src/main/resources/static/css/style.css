@@ -116,12 +116,37 @@ main{
 	border-radius:100px;
 }
 
-.bg-light{
-	background-color:#f5fafe;
+.bg-normal{
+	background-color:rgb(236, 245, 253);
 }
 
 .bg-blue{
 	background-color: #3399fe;
+}
+
+.inputEr{
+	text-align: left;
+	font-size:0.8rem;
+	color:#ff6666
+}
+
+.scrollable-list {
+    max-height: 400px; /* 스크롤 영역 높이 제한 */
+    overflow-y: auto;
+}
+.file-item {
+    border-bottom: 1px solid #ddd; /* 각 항목 구분선 */
+    padding: 10px;
+}
+.file-item:last-child {
+    border-bottom: none; /* 마지막 항목은 구분선 제거 */
+}
+.file-title {
+    font-weight: bold;
+}
+.file-details {
+    font-size: 0.9rem;
+    color: #666;
 }
 
 footer {
@@ -129,3 +154,5 @@ footer {
     font-size: 0.9rem;
     color: #555;
 }
+
+
