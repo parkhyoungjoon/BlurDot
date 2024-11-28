@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}">
+
+    <main layout:fragment="content">
+		<div class="page_container">
+			<div class="row mt-5">
+				<div class="w-100"><h1 class="mt-5" th:text="${msgTitle}"></h1></div>
+				<h5 class="mt-5" th:text="${msgContent}"></h5>
+			</div>
+		</div>
+    </main>
+</html>

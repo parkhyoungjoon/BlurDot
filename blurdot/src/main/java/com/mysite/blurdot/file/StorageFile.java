@@ -1,8 +1,10 @@
 package com.mysite.blurdot.file;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.mysite.blurdot.user.User;
+import com.mysite.blurdot.processing.Processing;
+import com.mysite.blurdot.user.SiteUser;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -27,7 +29,7 @@ import lombok.Setter;
 @Table(name = "file_tb")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class File {
+public class StorageFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fileId;
@@ -52,13 +54,13 @@ public class File {
     
     @ManyToOne
 	@JoinColumn(name="id") 
-	private User user;
+	private SiteUser user;
     
     @OneToMany(mappedBy = "file", cascade = CascadeType.REMOVE) 
     private List<Processing> processingList;
     
     @Builder
-    public File(Long fileId,String fileName,String filePath, Short fileSize, Short fileLength, Short fileStatus, LocalDateTime fileDate){
+    public StorageFile(Long fileId,String fileName,String filePath, Short fileSize, Short fileLength, Short fileStatus, LocalDateTime fileDate){
     	this.fileId = fileId;
     	this.fileName = fileName;
     	this.filePath = filePath;
